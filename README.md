@@ -90,3 +90,87 @@ In each loop however, Sphere2 will be rotated to 180+x_rotate degrees so that bo
 opposite each other and do not end up in the same spot.
 You can compare this to a clock where if one sphere is at 1 o clock (so 30 degrees from the start), the
 opposite end must be at 7 o clock (and so 180+30 degrees from the start)</p>
+
+<h2> Scenario Generator </h2>
+<p>
+The program consists of a few user defined values. The floor is divided into a grid so that there are
+essentially square ‘land plots’ for each user defined object. We have a list of string called object list
+that contains “empty “, “oil”, “cone” or “crates” that determines what object should be created at
+each land plot. A block of code reads the string at each index of the list, and depending on what the
+string is, performs the function that either makes crates, makes a cone, makes an oil drum or does
+nothing and creates the object at that land plot before moving onto the next land plot.
+Dimensionwidth is the area of each landplot, and so the distance between each generated object’s
+origin. This ideally should not be reduced as it may cause some objects to collide with each other,
+such as a cone fusing with a crate.</p>
+
+<p>
+SceneDimensions is the number n, in which the program creates an n x n number of land plots. If it
+was 4 for example, the program produces a 4x4 land plot and so 16 land plots.
+Firstly, the program starts by determining the minimum number of objects required inside the list
+through objectsneeded= SceneDimensions x SceneDimensions. The program then looks at another
+set of values (emptyplotnum, oildrumnum, conenum, cratesnum) which specify the ratio in which
+the objects should ideally appear. For instance (0,0,1,0) will just generate a scene full of cones while
+(2,1,0,0) with roughly 2 empty plots per cone. For each of these values, it will either add “empty”,
+“oil”, “cone” or “crates” into a list. (using the previous examples we have a list of
+[“cone”,”cone”…”cone”] and a list of [“empty”,”empty”,”cone”,…”empty”,”empty”,”cone”]). Note
+that the pattern of how the objects appear is duplicated which is relatively boring – this is why we
+use the random.shuffle function to shuffle the order of the list so that the entire pattern of the
+object list is now somewhat random. Also note, that the length of the object list may be slightly
+bigger than the objectsneeded value which is fine – it simply means some objects in the list won’t be
+printed after a certain index. </p>
+
+<h2> Projectile Motion </h2>
+
+<h3> Sphere 1 – Bouncing ball </h3>
+<p>The ball will bounce a certain height, and then bounce half the height repeatedly for a certain
+number of bounces. </p>
+
+<p> Example of a ball bouncing 3 times for height h and travelling x metres per bounce.
+Originally, I tested the ball drop animation with a fixed number of 10 bounces, and experimented
+the animation with a different number of frames. I found out that having an average of roughly 40
+frames for each bounce made the animation look smooth, and hence this is why we calculate the
+number of bounces = (number of frames / 40) so that we roughly get 40 frames per bounce.
+We also have 2 other variables that affect the animation, max height (height of the first bounce) and
+the x distance travelled per bounce. The z value of the coordinates is always 0 so we do not need to
+work this out.
+The ball originally starts at the origin (0,0,0).
+Then for each bounce, we are interested in the peak of the bounce and then when the ball hits the
+floor again.
+We work out the coordinate at the peak of the bounce – which is half the current height of the
+previous peak of the ball (currenty = currenty / 2) (which is why current height is doubled initially)
+and the current x coordinate is the previous x coordinate + x/2 m (currentx = currentx +
+(xperbounce/2)).
+The coordinate for hitting the floor is then simply calculated as y=0 and current x coordinate is the
+previous x coordinate + x/2 m (currentx = currentx + (xperbounce/2)). (note currenty does not
+change here as that is only concerned with the ball peak).
+The path and object is then created, along with the path animation where the start time (STU) is set
+to 0 and the end time (ETU) is set to the number of frames.
+</p>
+
+<h3> Sphere 2 – Curved Ball Rolling </h3>
+<p>
+The ball will do a semicircle(ish) roll around the origin (0,0,0) without intersecting sphere 1. This ball
+will roll for the first half of the number of frames. We define the path using 4 nodes with d2 distance
+from the origin (0,0,0). In the example below, d2 is set to 3. The following will calculate the list of
+coordinates (names as rollordinates) as:
+</p>
+
+<p>
+(node 1 to node 4 respectively) = [(3,0,3), (-3,0,3), (-3,0,-3), (3,0,-3)]
+</p>
+
+<p> From here we create the path (with d = 3 for some form of curvature) and the sphere 2 object
+before creating the path animation. In the path animation, the start time is set to 0 and the end time
+is set to half the number of frames (etu=totalbouncetime/2) so that it stops halfway through the
+main animation. </p>
+
+<h3> Sphere 3 – Straight Diagonal Ball Rolling </h3>
+<p>
+This ball rolls from where sphere 2 ends to where sphere 3 ends. It starts moving halfway through
+the animation until the end of the animation and simply rolls in a straight diagonal path.
+We calculate the path simply by obtaining node4 and the last position in coordinates list used for the
+ball bouncing. From here we create the path and object as normal, and create the path animation as
+start time =(totalbouncetime/2) so it starts halfway through the animation and end time =
+totalbouncetime so that both sphere 1 and sphere 3 (this one) meet at the same position at the
+same time.
+</p>
