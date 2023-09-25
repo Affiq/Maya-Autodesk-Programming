@@ -174,3 +174,13 @@ start time =(totalbouncetime/2) so it starts halfway through the animation and e
 totalbouncetime so that both sphere 1 and sphere 3 (this one) meet at the same position at the
 same time.
 </p>
+
+<h2> Tornado Maker </h2>
+<p> Before running the script, you need to specify the number of objects that will populate the tornado. The program will then generate these objects to be distributed across the surface of an inverted cone, representing the tornado's face. </p>
+
+<p>
+The program's operation begins with the computation of the hypotenuse, which serves as the foundation for an equation to determine the height (y) corresponding to a given position (x). This calculation allows us to strategically place the objects on the cone's surface. However, by default, this approach positions all objects in a single line. To create a more realistic tornado effect, a random rotational adjustment along the Y-axis is applied to each object, enabling them to be scattered across the tornado's face.
+</p>
+
+<p>
+To enhance the realism further, a random rotation is also applied to each object relative to itself. This final step contributes to a tornado appearance that closely resembles reality. When you choose a higher number of objects, the tornado will appear as if it's composed of a variety of distinct elements. </p>
