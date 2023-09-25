@@ -12,6 +12,7 @@ A subset of different scripts that will manipulate the scenes in Maya Autodesk -
   <li> <b> Input Wave Length: </b> The overall length of the DNA model in terms of pi (affects rotation)</li>
 
 <h3> Samples </h3>
+  ![alt text](https://github.com/Affiq/Maya-Autodesk-Programming/blob/main/Images/DNA1.PNG?raw=true)
 
 
 </ul>
