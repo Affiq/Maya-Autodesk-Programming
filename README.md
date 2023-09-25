@@ -1,4 +1,4 @@
-# Maya-Autodesk-Programming
+<h1> Maya-Autodesk-Programming </h1>
 A subset of different scripts that will manipulate the scenes in Maya Autodesk - such as a randomised scene generator, a tornado like scene, a ball projectile animation and a complex object creator.
 
 <h2> DNA Object Generator </h2>
@@ -12,8 +12,11 @@ A subset of different scripts that will manipulate the scenes in Maya Autodesk -
   <li> <b> Input Wave Length: </b> The overall length of the DNA model in terms of pi (affects rotation)</li>
 
 <h3> Samples </h3>
-  ![alt text](https://github.com/Affiq/Maya-Autodesk-Programming/blob/main/Images/DNA1.PNG?raw=true)
 
+![DNA1](https://github.com/Affiq/Maya-Autodesk-Programming/blob/main/Images/DNA1.PNG?raw=true)
+![DNA2](https://github.com/Affiq/Maya-Autodesk-Programming/blob/main/Images/DoubleCopies.PNG?raw=true)
+![DNA1](https://github.com/Affiq/Maya-Autodesk-Programming/blob/main/Images/DoubleWavelength.PNG?raw=true)
+![DNA1](https://github.com/Affiq/Maya-Autodesk-Programming/blob/main/Images/ReducedX.PNG?raw=true)
 
 </ul>
 
@@ -58,7 +61,11 @@ the Ysinwave function and makebar function. The makestrand function simply creat
 wave – but also rotates this one 180 degrees upside down. It then produces the same sin wave but
 with no rotation, so you get two strands without a middle.
 
+![DNA1](https://github.com/Affiq/Maya-Autodesk-Programming/blob/main/Images/Peaks.PNG?raw=true)
+
 The barmaker function then fills out this gap to produce a simple 2d DNA model. </p>
+
+![DNA1](https://github.com/Affiq/Maya-Autodesk-Programming/blob/main/Images/Strands.PNG?raw=true)
 
 <h3> DNAMaker2.0 function </h3>
 <p> We then attempt to shade the model with different colours. It uses the exact same code as before to
