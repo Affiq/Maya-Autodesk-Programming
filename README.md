@@ -4,6 +4,17 @@ A subset of different scripts that will manipulate the scenes in Maya Autodesk -
 <h2> DNA Object Generator </h2>
 
 <h3> Usage </h3>
+<p> There are a number of parameters that manipulate the model of the DNA. </p>
+<ul>
+  <li> <b> Input Copy Number: </b> The number of individual strands to produce</li>
+  <li> <b> Input Peak: </b> The maximum height/width of the strands</li>
+  <li> <b> X Increment: </b> The spacing and distance between each strand.</li>
+  <li> <b> Input Wave Length: </b> The overall length of the DNA model in terms of pi (affects rotation)</li>
+
+<h3> Samples </h3>
+
+
+</ul>
 
 <h3> Explanation </h3>
 <p>  The main function uses the sin wave (you can see this when we use math.sin). the value of y will equal sin x (y will at most be 1 or -1 in the diagram above
